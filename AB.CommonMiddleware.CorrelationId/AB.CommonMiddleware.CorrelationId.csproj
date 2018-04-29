@@ -12,6 +12,7 @@
     <DocumentationFile>bin\Release\netstandard1.4\CorrelationId.xml</DocumentationFile>
     <PackageProjectUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
