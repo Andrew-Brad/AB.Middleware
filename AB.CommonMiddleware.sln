@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.CommonMiddleware.CorrelationId", "AB.CommonMiddleware.CorrelationId\AB.CommonMiddleware.CorrelationId.csproj", "{BA125F41-E015-4FCF-B215-80412A27E21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.CommonMiddleware.CorrelationId", "src\AB.CommonMiddleware.CorrelationId\AB.CommonMiddleware.CorrelationId.csproj", "{BA125F41-E015-4FCF-B215-80412A27E21F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.CommonMiddleware.Tests", "AB.CommonMiddleware.Tests\AB.CommonMiddleware.Tests.csproj", "{FEA4E46E-08FF-4A24-BE0D-4666E8435969}"
 EndProject

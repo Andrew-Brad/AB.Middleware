@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AB.CommonMiddleware.CorrelationId\AB.CommonMiddleware.CorrelationId.csproj" />
+    <ProjectReference Include="..\..\src\AB.CommonMiddleware.CorrelationId\AB.CommonMiddleware.CorrelationId.csproj" />
   </ItemGroup>
 
 </Project>
