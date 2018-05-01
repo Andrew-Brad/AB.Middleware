@@ -3,11 +3,11 @@
     /// <summary>
     /// Provides access to the <see cref="CorrelationContext"/> for the current request.
     /// </summary>
-    public interface ICorrelationContextAccessor
+    public interface IClientIdContextAccessor
     {
         /// <summary>
         /// The <see cref="CorrelationContext"/> for the current request.
         /// </summary>
-        CorrelationContext CorrelationContext { get; set; }
+        ClientApplicationIdContext CorrelationContext { get; set; }
     }
 }

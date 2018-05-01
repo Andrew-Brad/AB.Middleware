@@ -3,12 +3,12 @@
 namespace AB.CommonMiddleware
 {
     /// <inheritdoc />
-    public class CorrelationContextAccessor : ICorrelationContextAccessor
+    public class ClientIdContextAccessor : IClientIdContextAccessor
     {
-        private static AsyncLocal<CorrelationContext> _correlationContext = new AsyncLocal<CorrelationContext>();
+        private static AsyncLocal<ClientApplicationIdContext> _correlationContext = new AsyncLocal<ClientApplicationIdContext>();
 
         /// <inheritdoc />
-        public CorrelationContext CorrelationContext
+        public ClientApplicationIdContext CorrelationContext
         {
             get => _correlationContext.Value;
             set => _correlationContext.Value = value;

@@ -1,20 +1,20 @@
 ﻿namespace AB.CommonMiddleware
 {
     /// <summary>
-    /// A factory for creating and disposing an instance of a <see cref="CorrelationContext"/>.
+    /// A factory for creating and disposing an instance of a <see cref="ClientApplicationIdContext"/>.
     /// </summary>
-    public interface ICorrelationContextFactory
+    public interface IClientIdContextFactory
     {
         /// <summary>
-        /// Creates a new <see cref="CorrelationContext"/> with the correlation ID set for the current request.
+        /// Creates a new <see cref="ClientApplicationIdContext"/> with the Client Id set for the current request.
         /// </summary>
-        /// <param name="correlationId">The correlation ID to set on the context.</param>
-        /// /// <param name="header">The header used to hold the correlation ID.</param>
-        /// <returns>A new instance of a <see cref="CorrelationContext"/>.</returns>
-        CorrelationContext Create(string correlationId, string header);
+        /// <param name="correlationId">The Client Id to set on the context.</param>
+        /// /// <param name="header">The header used to hold the Client Id.</param>
+        /// <returns>A new instance of a <see cref="ClientApplicationIdContext"/>.</returns>
+        ClientApplicationIdContext Create(string correlationId, string header);
 
         /// <summary>
-        /// Disposes of the <see cref="CorrelationContext"/> for the current request.
+        /// Disposes of the <see cref="ClientApplicationIdContext"/> for the current request.
         /// </summary>
         void Dispose();
     }

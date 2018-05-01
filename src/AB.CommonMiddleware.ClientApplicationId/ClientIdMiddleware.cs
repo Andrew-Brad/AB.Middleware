@@ -7,73 +7,62 @@ using Microsoft.Extensions.Primitives;
 namespace AB.CommonMiddleware
 {
     /// <summary>
-    /// Middleware which attempts to reads / creates a Correlation ID that can then be used in logs and 
+    /// Middleware which attempts to reads / creates a Client Id that can then be used in logs and 
     /// passed to upstream requests.
     /// </summary>
-    public class CorrelationIdMiddleware
+    public class ClientIdMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly CorrelationIdOptions _options;
+        private readonly ClientIdOptions _options;
 
         /// <summary>
         /// Creates a new instance of the CorrelationIdMiddleware.
         /// </summary>
         /// <param name="next">The next middleware in the pipeline.</param>
         /// <param name="options">The configuration options.</param>
-        public CorrelationIdMiddleware(RequestDelegate next, IOptions<CorrelationIdOptions> options)
+        public ClientIdMiddleware(RequestDelegate next, IOptions<ClientIdOptions> options)
         {
             _next = next ?? throw new ArgumentNullException(nameof(next));
             _options = options.Value ?? throw new ArgumentNullException(nameof(options));
         }
 
         /// <summary>
-        /// Processes a request to synchronise TraceIdentifier and Correlation ID headers. Also creates a 
-        /// <see cref="CorrelationContext"/> for the current request and disposes of it when the request is completing.
+        /// Processes a request to synchronise TraceIdentifier and Client Id headers. Also creates a 
+        /// <see cref="ClientApplicationIdContext"/> for the current request and disposes of it when the request is completing.
         /// </summary>
         /// <param name="context">The <see cref="HttpContext"/> for the current request.</param>
-        /// <param name="correlationContextFactory">The <see cref="ICorrelationContextFactory"/> which can create a <see cref="CorrelationContext"/>.</param>
-        public async Task Invoke(HttpContext context, ICorrelationContextFactory correlationContextFactory)
+        /// <param name="clientIdContextFactory">The <see cref="IClientIdContextFactory"/> which can create a <see cref="ClientApplicationIdContext"/>.</param>
+        public async Task Invoke(HttpContext context, IClientIdContextFactory clientIdContextFactory)
         {
-            var correlationId = SetCorrelationId(context);
+            var clientId = SetClientId(context);
 
-            if (_options.UpdateTraceIdentifier)
-                context.TraceIdentifier = correlationId;
-
-            correlationContextFactory.Create(correlationId, _options.Header);
+            clientIdContextFactory.Create(clientId, _options.Header);
 
             if (_options.IncludeInResponse)
             {
-                // apply the correlation ID to the response header for client side tracking
+                // apply the Client Id to the response header for client side tracking
                 context.Response.OnStarting(() =>
                 {
                     if (!context.Response.Headers.ContainsKey(_options.Header))
                     {
-                        context.Response.Headers.Add(_options.Header, correlationId);
+                        context.Response.Headers.Add(_options.Header, clientId);
                     }
-
                     return Task.CompletedTask;
                 });
             }
 
             await _next(context);
 
-            correlationContextFactory.Dispose();
+            clientIdContextFactory.Dispose();
         }
 
-        private StringValues SetCorrelationId(HttpContext context)
+        private StringValues SetClientId(HttpContext context)
         {
-            var correlationIdFoundInRequestHeader = context.Request.Headers.TryGetValue(_options.Header, out var correlationId);
+            bool clientIdFoundInRequestHeader = context.Request.Headers.TryGetValue(_options.Header, out var clientId);
 
-            if (RequiresGenerationOfCorrelationId(correlationIdFoundInRequestHeader, correlationId))
-                correlationId = GenerateCorrelationId(context.TraceIdentifier);
+            if (clientIdFoundInRequestHeader == false) clientId = Guid.Empty.ToString();
 
-            return correlationId;
+            return clientId;
         }
-
-        private static bool RequiresGenerationOfCorrelationId(bool idInHeader, StringValues idFromHeader) =>
-            !idInHeader || StringValues.IsNullOrEmpty(idFromHeader);
-
-        private StringValues GenerateCorrelationId(string traceIdentifier) =>
-            _options.UseGuidForCorrelationId || string.IsNullOrEmpty(traceIdentifier) ? Guid.NewGuid().ToString() : traceIdentifier;
     }
 }

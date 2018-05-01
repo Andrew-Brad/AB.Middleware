@@ -1,34 +1,34 @@
 ﻿namespace AB.CommonMiddleware
 {
     /// <inheritdoc />
-    public class CorrelationContextFactory : ICorrelationContextFactory
+    public class ClientIdContextFactory : IClientIdContextFactory
     {
-        private readonly ICorrelationContextAccessor _correlationContextAccessor;
+        private readonly IClientIdContextAccessor _clientIdContextAccessor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:AB.CommonMiddleware.CorrelationContextFactory" /> class.
         /// </summary>
-        public CorrelationContextFactory()
+        public ClientIdContextFactory()
             : this(null)
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CorrelationContextFactory"/> class.
+        /// Initializes a new instance of the <see cref="ClientIdContextFactory"/> class.
         /// </summary>
-        /// <param name="correlationContextAccessor">The <see cref="ICorrelationContextAccessor"/> through which the <see cref="CorrelationContext"/> will be set.</param>
-        public CorrelationContextFactory(ICorrelationContextAccessor correlationContextAccessor)
+        /// <param name="clientIdContextAccessor">The <see cref="IClientIdContextAccessor"/> through which the <see cref="ClientApplicationIdContext"/> will be set.</param>
+        public ClientIdContextFactory(IClientIdContextAccessor clientIdContextAccessor)
         {
-            _correlationContextAccessor = correlationContextAccessor;
+            _clientIdContextAccessor = clientIdContextAccessor;
         }
 
         /// <inheritdoc />
-        public CorrelationContext Create(string correlationId, string header)
+        public ClientApplicationIdContext Create(string correlationId, string header)
         {
-            var correlationContext = new CorrelationContext(correlationId, header);
+            var correlationContext = new ClientApplicationIdContext(correlationId, header);
 
-            if (_correlationContextAccessor != null)
+            if (_clientIdContextAccessor != null)
             {
-                _correlationContextAccessor.CorrelationContext = correlationContext;
+                _clientIdContextAccessor.CorrelationContext = correlationContext;
             }
 
             return correlationContext;
@@ -37,9 +37,9 @@
         /// <inheritdoc />
         public void Dispose()
         {
-            if (_correlationContextAccessor != null)
+            if (_clientIdContextAccessor != null)
             {
-                _correlationContextAccessor.CorrelationContext = null;
+                _clientIdContextAccessor.CorrelationContext = null;
             }
         }
     }

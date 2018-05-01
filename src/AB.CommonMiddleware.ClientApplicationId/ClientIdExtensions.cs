@@ -7,10 +7,10 @@ namespace AB.CommonMiddleware
     /// <summary>
     /// Extension methods for the CorrelationIdMiddleware.
     /// </summary>
-    public static class CorrelationIdExtensions
+    public static class ClientIdExtensions
     {
         /// <summary>
-        /// Enables correlation IDs for the request.
+        /// Enables Client Ids for the request.
         /// </summary>
         /// <param name="app"></param>
         /// <returns></returns>
@@ -21,14 +21,14 @@ namespace AB.CommonMiddleware
                 throw new ArgumentNullException(nameof(app));
             }
 
-            return app.UseCorrelationId(new CorrelationIdOptions());
+            return app.UseClientId(new ClientIdOptions());
         }
 
         /// <summary>
-        /// Enables correlation IDs for the request.
+        /// Enables Client Ids for the request.
         /// </summary>
         /// <param name="app"></param>
-        /// <param name="header">The header field name to use for the correlation ID.</param>
+        /// <param name="header">The header field name to use for the Client Id.</param>
         /// <returns></returns>
         public static IApplicationBuilder UseCorrelationId(this IApplicationBuilder app, string header)
         {
@@ -37,19 +37,19 @@ namespace AB.CommonMiddleware
                 throw new ArgumentNullException(nameof(app));
             }
 
-            return app.UseCorrelationId(new CorrelationIdOptions
+            return app.UseClientId(new ClientIdOptions
             {
                 Header = header
             });
         }
 
         /// <summary>
-        /// Enables correlation IDs for the request.
+        /// Enables Client Ids for the request.
         /// </summary>
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseCorrelationId(this IApplicationBuilder app, CorrelationIdOptions options)
+        public static IApplicationBuilder UseClientId(this IApplicationBuilder app, ClientIdOptions options)
         {
             if (app == null)
             {
@@ -61,12 +61,12 @@ namespace AB.CommonMiddleware
                 throw new ArgumentNullException(nameof(options));
             }
 
-            if (app.ApplicationServices.GetService(typeof(ICorrelationContextFactory)) == null)
+            if (app.ApplicationServices.GetService(typeof(IClientIdContextFactory)) == null)
             {
                 throw new InvalidOperationException("Unable to find the required services. You must call the AddCorrelationId method in ConfigureServices in the application startup code.");
             }
 
-            return app.UseMiddleware<CorrelationIdMiddleware>(Options.Create(options));
+            return app.UseMiddleware<ClientIdMiddleware>(Options.Create(options));
         }
     }
 }

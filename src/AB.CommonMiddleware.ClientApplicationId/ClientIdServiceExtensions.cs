@@ -9,13 +9,13 @@ namespace AB.CommonMiddleware
     public static class CorrelationIdServiceExtensions
     {
         /// <summary>
-        /// Adds required services to support the Correlation ID functionality.
+        /// Adds required services to support the Client Id functionality.
         /// </summary>
         /// <param name="serviceCollection"></param>
         public static void AddCorrelationId(this IServiceCollection serviceCollection)
         {
-            serviceCollection.TryAddSingleton<ICorrelationContextAccessor, CorrelationContextAccessor>();
-            serviceCollection.TryAddTransient<ICorrelationContextFactory, CorrelationContextFactory>();
+            serviceCollection.TryAddSingleton<IClientIdContextAccessor, ClientIdContextAccessor>();
+            serviceCollection.TryAddTransient<IClientIdContextFactory, ClientIdContextFactory>();
         }
     }
 }
