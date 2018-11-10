@@ -1,5 +1,5 @@
 # AB.Extensions
-This is an extensions library I've built up over time, free of external dependencies, with constantly increasing test coverage and benchmarks.  Constant strings, simple enums, and missing LINQ methods are all part of this library.
+This is were I keep my middleware packages for Asp.Net Core.  Credit to Steve Gordon's [CorrelationId Repo](https://github.com/stevejgordon/CorrelationId) for getting me online with the best middleware and thread safe context classes for middleware.
 
 The source now officially lives in Azure DevOps, but is continuously pushed to Github via Azure Pipelines CI.
 
@@ -7,20 +7,20 @@ The source now officially lives in Azure DevOps, but is continuously pushed to G
 
 __Feature Build__
 
-[![Primary Build in Azure Pipelines](https://zep519.visualstudio.com/AB.Extensions%20Github%20Project/_apis/build/status/AB.Extensions%20Github%20Project)](https://zep519.visualstudio.com/AB.Extensions%20Github%20Project/_build?definitionId=2)
+[![Primary Build in Azure Pipelines](https://zep519.visualstudio.com/AB.Middleware%20Github%20Project/_apis/build/status/AB.Middleware%20Github%20Project)](https://zep519.visualstudio.com/AB.Middleware%20Github%20Project/_apis/build/status/AB.Middleware%20Github%20Project?branchName=master)
 
 
 __CI Sync to Github__
 
-[![CI Sync](https://zep519.visualstudio.com/AB.Extensions%20Github%20Project/_apis/build/status/Sync%20to%20Github)](https://zep519.visualstudio.com/AB.Extensions%20Github%20Project/_build/latest?definitionId=3)
+[![CI Sync](https://zep519.visualstudio.com/AB.Middleware%20Github%20Project/_apis/build/status/Sync%20to%20Github)](https://zep519.visualstudio.com/AB.Middleware%20Github%20Project/_apis/build/status/Sync%20to%20Github?branchName=master)
 
 Import easily by editing your Csproj:
 
-``<PackageReference Include="AB.Extensions" Version="3.0.0" />``
+``<PackageReference Include="AB.Middleware.ClientApplicationId" Version="2.0.0" />``
 
 Alternatively with dotnet CLI:
 
-``dotnet add package AB.Extensions``
+``dotnet add package AB.Middleware.ClientApplicationId``
 
 
 ## CI Packaging
