@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AB.Middleware.ClientApplicationId" Version="2.0.0-20181110.18" />
-    <PackageReference Include="AB.Middleware.CorrelationId" Version="2.0.0-20181110.18" />
+    <PackageReference Include="AB.Middleware.ClientApplicationId" Version="2.0.0-20181110.22" />
+    <PackageReference Include="AB.Middleware.CorrelationId" Version="2.0.0-20181110.22" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
   </ItemGroup>
 

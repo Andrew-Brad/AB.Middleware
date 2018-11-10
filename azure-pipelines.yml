@@ -91,36 +91,36 @@ steps:
     verbosityPush: 'normal'
     #packDestination: '$(Build.ArtifactStagingDirectory)' # Optional - docs also say default is $(Build.ArtifactStagingDirectory)/*.nupkg    
 
-# # This Pack command only runs on master branch and requires an override variable to be supplied (manual queueing)
-# - task: DotNetCoreCLI@2
-#   displayName: 'Pack Release Nuget Package'
-#   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'),in(variables['Build.Reason'], 'Manual'))
-#   inputs:
-#     command: 'pack'
-#     configuration: '$(buildConfiguration)'
-#     packagesToPack: './src/AB.Extensions/AB.Extetastynsions.csproj' # Required when command == pack
-#     packDirectory: '$(Build.ArtifactStagingDirectory)' # Optional
-#     nobuild: true # Optional - logs will echo a Build, when in fact the CLI assumes that the binaries are present, and will fail if they are not
-#     versioningScheme: 'off' # Options: off, byPrereleaseNumber, byEnvVar, byBuildNumber
-#     #arguments: '--someArg $(Build.BuildNumber)'
-#     #versionEnvVar: '$(Build.BuildNumber)' # Required when versioningScheme == byEnvVar
-#     #majorVersion: '$(major)' # Required when versioningScheme == byPrereleaseNumber
-#     #minorVersion: '$(minor)' # Required when versioningScheme == byPrereleaseNumber
-#     #patchVersion: '$(patch)' # Required when versioningScheme == byPrereleaseNumber
-#     #buildProperties: versionSuffix=$(Build.BuildNumber) # Optional
-#     verbosityPack: 'detailed' # Options: quiet, minimal, normal, detailed, diagnostic   
+# This Pack command only runs on master branch and requires an override variable to be supplied (manual queueing)
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Release Nuget Package'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'),in(variables['Build.Reason'], 'Manual'))
+  inputs:
+    command: 'pack'
+    configuration: '$(buildConfiguration)'
+    packagesToPack: '$(Build.ArtifactStagingDirectory)/AB.Middleware.*.*.*.*.nupkg' # Required when command == pack
+    packDirectory: '$(Build.ArtifactStagingDirectory)' # Optional
+    nobuild: true # Optional - logs will echo a Build, when in fact the CLI assumes that the binaries are present, and will fail if they are not
+    versioningScheme: 'off' # Options: off, byPrereleaseNumber, byEnvVar, byBuildNumber
+    #arguments: '--someArg $(Build.BuildNumber)'
+    #versionEnvVar: '$(Build.BuildNumber)' # Required when versioningScheme == byEnvVar
+    #majorVersion: '$(major)' # Required when versioningScheme == byPrereleaseNumber
+    #minorVersion: '$(minor)' # Required when versioningScheme == byPrereleaseNumber
+    #patchVersion: '$(patch)' # Required when versioningScheme == byPrereleaseNumber
+    #buildProperties: versionSuffix=$(Build.BuildNumber) # Optional
+    verbosityPack: 'detailed' # Options: quiet, minimal, normal, detailed, diagnostic   
 
-# # This Push command only runs on master branch and requires an override variable to be supplied (manual queueing)
-# #- script: echo 'Conditions met - master branch and manual build'
-# - task: NuGetCommand@2 
-#   displayName: 'Push Release Package to Nuget.org'
-#   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'),in(variables['Build.Reason'], 'Manual'))
-#   inputs:
-#     command: 'push'
-#     nuGetFeedType: external
-#     publishFeedCredentials: 'Nuget'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/AB.Extensions.?.?.?.nupkg'
-#     verbosityPush: 'detailed'
+# This Push command only runs on master branch and requires an override variable to be supplied (manual queueing)
+#- script: echo 'Conditions met - master branch and manual build'
+- task: NuGetCommand@2 
+  displayName: 'Push Release Package to Nuget.org'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'),in(variables['Build.Reason'], 'Manual'))
+  inputs:
+    command: 'push'
+    nuGetFeedType: external
+    publishFeedCredentials: 'Nuget'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/AB.Middleware.*.?.?.?.nupkg'
+    verbosityPush: 'detailed'
 
 # Pre-requisite task(s) above for dotnet publish CLI
 - task: PublishPipelineArtifact@0
