@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace AB.CommonMiddleware
+namespace AB.Middleware
 {
     /// <summary>
     /// Extensions on the <see cref="IServiceCollection"/>.

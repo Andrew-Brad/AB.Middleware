@@ -1,4 +1,4 @@
-﻿namespace AB.CommonMiddleware
+﻿namespace AB.Middleware
 {
     /// <summary>
     /// A factory for creating and disposing an instance of a <see cref="CorrelationContext"/>.

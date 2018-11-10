@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace AB.CommonMiddleware.SampleApp
+namespace AB.Middleware.SampleApp
 {
     public class Program
     {

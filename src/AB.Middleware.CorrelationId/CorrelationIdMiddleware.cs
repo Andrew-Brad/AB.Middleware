@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
-namespace AB.CommonMiddleware
+namespace AB.Middleware
 {
     /// <summary>
     /// Middleware which attempts to reads / creates a Correlation ID that can then be used in logs and 

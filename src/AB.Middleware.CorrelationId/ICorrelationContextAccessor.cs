@@ -1,4 +1,4 @@
-﻿namespace AB.CommonMiddleware
+﻿namespace AB.Middleware
 {
     /// <summary>
     /// Provides access to the <see cref="CorrelationContext"/> for the current request.

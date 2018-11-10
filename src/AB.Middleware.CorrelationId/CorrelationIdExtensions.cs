@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 
-namespace AB.CommonMiddleware
+namespace AB.Middleware
 {
     /// <summary>
     /// Extension methods for the CorrelationIdMiddleware.

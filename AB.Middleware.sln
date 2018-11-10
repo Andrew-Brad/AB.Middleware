@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.CommonMiddleware.CorrelationId", "src\AB.CommonMiddleware.CorrelationId\AB.CommonMiddleware.CorrelationId.csproj", "{BA125F41-E015-4FCF-B215-80412A27E21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.CorrelationId", "src\AB.Middleware.CorrelationId\AB.Middleware.CorrelationId.csproj", "{BA125F41-E015-4FCF-B215-80412A27E21F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.CommonMiddleware.Tests", "test\AB.CommonMiddleware.Tests\AB.CommonMiddleware.Tests.csproj", "{FEA4E46E-08FF-4A24-BE0D-4666E8435969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.Tests", "test\AB.Middleware.Tests\AB.Middleware.Tests.csproj", "{FEA4E46E-08FF-4A24-BE0D-4666E8435969}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EB8AE11C-29D3-4C75-A9B7-803106D04CA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E01752B3-E6D0-4A5F-85DE-A4703C07FAC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AB.CommonMiddleware.SampleApp", "src\AB.CommonMiddleware.SampleApp\AB.CommonMiddleware.SampleApp.csproj", "{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.SampleApp", "src\AB.Middleware.SampleApp\AB.Middleware.SampleApp.csproj", "{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.ClientApplicationId", "src\AB.Middleware.ClientApplicationId\AB.Middleware.ClientApplicationId.csproj", "{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{BA125F41-E015-4FCF-B215-80412A27E21F} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
 		{FEA4E46E-08FF-4A24-BE0D-4666E8435969} = {E01752B3-E6D0-4A5F-85DE-A4703C07FAC2}
 		{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
+		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA6846D6-75DC-42E6-85A5-E722AD1E0D3B}

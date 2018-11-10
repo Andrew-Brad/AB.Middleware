@@ -1,4 +1,4 @@
-﻿namespace AB.CommonMiddleware.SampleApp
+﻿namespace AB.Middleware.SampleApp
 {
     public class ScopedClass
     {

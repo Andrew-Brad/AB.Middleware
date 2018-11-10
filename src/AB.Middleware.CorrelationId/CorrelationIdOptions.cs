@@ -1,11 +1,11 @@
-﻿namespace AB.CommonMiddleware
+﻿namespace AB.Middleware
 {
     /// <summary>
     /// Options for correlation ids.
     /// </summary>
     public class CorrelationIdOptions
     {
-        private const string DefaultHeader = "X-AB-Correlation-ID";
+        private const string DefaultHeader = "AB-Correlation-ID";
 
         /// <summary>
         /// The name of the header from which the Correlation ID is read/written.
@@ -36,5 +36,16 @@
         /// <para> Default: false.</para>
         /// </summary>
         public bool UseGuidForCorrelationId { get; set; } = false;
+
+        /// <summary>
+        /// Standard defaults for working with correlation Id's.
+        /// </summary>
+        public static CorrelationIdOptions DefaultOptions = new CorrelationIdOptions()
+        {
+            Header = DefaultHeader,
+            IncludeInResponse = true,
+            UpdateTraceIdentifier = false,
+            UseGuidForCorrelationId = true
+        };
     }
 }

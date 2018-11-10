@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AB.CommonMiddleware
+namespace AB.Middleware
 {
     /// <summary>
     /// Provides access to per request correlation properties.

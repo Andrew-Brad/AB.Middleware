@@ -1,4 +1,4 @@
-﻿namespace AB.CommonMiddleware
+﻿namespace AB.Middleware
 {
     /// <inheritdoc />
     public class CorrelationContextFactory : ICorrelationContextFactory

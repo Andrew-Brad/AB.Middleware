@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace AB.CommonMiddleware
+namespace AB.Middleware
 {
     /// <inheritdoc />
     public class CorrelationContextAccessor : ICorrelationContextAccessor

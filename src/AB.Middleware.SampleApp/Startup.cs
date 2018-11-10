@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AB.CommonMiddleware.SampleApp
+namespace AB.Middleware.SampleApp
 {
     public class Startup
     {
@@ -20,6 +20,7 @@ namespace AB.CommonMiddleware.SampleApp
             services.AddMvc();
 
             services.AddCorrelationId();
+            services.AddClientId();
 
             services.AddScoped<ScopedClass>();
             services.AddTransient<TransientClass>();
@@ -34,7 +35,8 @@ namespace AB.CommonMiddleware.SampleApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCorrelationId();
+            app.UseCorrelationId(CorrelationIdOptions.DefaultOptions);
+            app.UseClientId();
 
             app.UseMvc();
         }
