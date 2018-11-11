@@ -98,7 +98,7 @@ steps:
   inputs:
     command: 'pack'
     configuration: '$(buildConfiguration)'
-    packagesToPack: '$(Build.ArtifactStagingDirectory)/AB.Middleware.*.*.*.*.nupkg' # Required when command == pack
+    packagesToPack: '**/*.csproj' # Required when command == pack
     packDirectory: '$(Build.ArtifactStagingDirectory)' # Optional
     nobuild: true # Optional - logs will echo a Build, when in fact the CLI assumes that the binaries are present, and will fail if they are not
     versioningScheme: 'off' # Options: off, byPrereleaseNumber, byEnvVar, byBuildNumber
