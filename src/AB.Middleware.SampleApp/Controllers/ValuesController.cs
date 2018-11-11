@@ -29,6 +29,9 @@ namespace AB.Middleware.SampleApp.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            // to test unhandled exception behaviour for HttpRequestLogging middleware - we should see Developer exception page
+            throw new IndexOutOfRangeException("RUHH ROOOOHHHHHHH!!!!!");
+
             var correlation = _correlationContext.CorrelationContext.CorrelationId;
 
             return new[]
