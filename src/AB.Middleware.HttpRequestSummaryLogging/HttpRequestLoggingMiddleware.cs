@@ -16,17 +16,30 @@ namespace AB.Middleware.HttpRequestLogging
     /// </summary>
     public class HttpRequestSummaryLoggingMiddleware
     {
+        /// <summary>
+        /// The log template used by this middleware.
+        /// </summary>
         public const string MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {ElapsedMilliseconds} ms";
 
         private readonly ILogger<HttpRequestSummaryLoggingMiddleware> _logger;
         private readonly RequestDelegate _next;
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="next"></param>
+        /// <param name="logger"></param>
         public HttpRequestSummaryLoggingMiddleware(RequestDelegate next, ILogger<HttpRequestSummaryLoggingMiddleware> logger)
         {
             _next = next ?? throw new ArgumentNullException(nameof(next));
             _logger = logger;
         }
 
+        /// <summary>
+        /// This is invoked in the middleware pipeline.
+        /// </summary>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
         public async Task Invoke(HttpContext httpContext)
         {
             if (httpContext == null) throw new ArgumentNullException(nameof(httpContext));

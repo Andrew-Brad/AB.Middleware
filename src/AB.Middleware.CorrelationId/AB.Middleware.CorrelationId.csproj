@@ -16,9 +16,9 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionPrefix>2.0.1</VersionPrefix>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
-    <PackageReleaseNotes>v2.0.0: TODO!</PackageReleaseNotes>
+    <PackageReleaseNotes>v2.0.1: This middleware will parse a correlation Id from a custom header, and can generate one if it does not exist. It also allows access via DI for custom scenarios using correlation Ids. Retargeted for netstandard 2.0.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

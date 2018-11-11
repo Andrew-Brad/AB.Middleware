@@ -3,6 +3,24 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Authors>Andrew Brad</Authors>
+    <Description>ASP.NET Core Client (Application) ID middleware which parses a client ID header and DI Context.</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>aspnetcore;clientid;applicationid</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageProjectUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/Andrew-Brad/AB.CommonMiddleware</PackageLicenseUrl>
+    <IsPackable>true</IsPackable>
+    <RepositoryType>git</RepositoryType>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <PackageReleaseNotes>v2.0.0: This middleware summarizes information about each HTTP request, and emits an information level log event recording response time, status code, etc.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
