@@ -29,6 +29,10 @@ namespace AB.Middleware.SampleApp.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            // to test unhandled exception behaviour for HttpRequestLogging middleware - we should see Developer exception page
+            if (DateTime.Now.Second % 2 == 0)
+            throw new Exception("Oh noez!  Unhandled error! You should see the developer exception page, and a Console log at info level reporting a 500.");
+
             var correlation = _correlationContext.CorrelationContext.CorrelationId;
 
             return new[]

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AB.Middleware.HttpRequestLogging;
 
 namespace AB.Middleware.SampleApp
 {
@@ -34,7 +35,9 @@ namespace AB.Middleware.SampleApp
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            // order matters!
+            app.UseMiddleware<HttpRequestSummaryLoggingMiddleware>();
             app.UseCorrelationId(CorrelationIdOptions.DefaultOptions);
             app.UseClientId();
 

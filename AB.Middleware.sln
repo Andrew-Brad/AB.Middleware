@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.SampleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.ClientApplicationId", "src\AB.Middleware.ClientApplicationId\AB.Middleware.ClientApplicationId.csproj", "{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AB.Middleware.HttpRequestSummaryLogging", "src\AB.Middleware.HttpRequestSummaryLogging\AB.Middleware.HttpRequestSummaryLogging.csproj", "{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{FEA4E46E-08FF-4A24-BE0D-4666E8435969} = {E01752B3-E6D0-4A5F-85DE-A4703C07FAC2}
 		{E1569F92-4BB4-45B1-ADA0-B84BAEAAFF69} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
 		{513752BB-1B8A-4BFB-A299-BB7FF342CBA4} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
+		{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4} = {EB8AE11C-29D3-4C75-A9B7-803106D04CA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA6846D6-75DC-42E6-85A5-E722AD1E0D3B}
