@@ -37,7 +37,7 @@ namespace AB.Middleware.SampleApp
             }
             
             // order matters!
-            app.UseMiddleware<HttpRequestLoggingMiddleware>();
+            app.UseMiddleware<HttpRequestSummaryLoggingMiddleware>();
             app.UseCorrelationId(CorrelationIdOptions.DefaultOptions);
             app.UseClientId();
 

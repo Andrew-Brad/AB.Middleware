@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.SampleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AB.Middleware.ClientApplicationId", "src\AB.Middleware.ClientApplicationId\AB.Middleware.ClientApplicationId.csproj", "{513752BB-1B8A-4BFB-A299-BB7FF342CBA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AB.Middleware.HttpRequestLogging", "src\AB.Middleware.HttpRequestLogging\AB.Middleware.HttpRequestLogging.csproj", "{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AB.Middleware.HttpRequestSummaryLogging", "src\AB.Middleware.HttpRequestLogging\AB.Middleware.HttpRequestSummaryLogging.csproj", "{DB7886BE-7922-4382-9C5F-9CD33D7ECFC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

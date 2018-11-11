@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Logging;
 
 namespace AB.Middleware.HttpRequestLogging
@@ -13,14 +14,14 @@ namespace AB.Middleware.HttpRequestLogging
     /// The intent of this middleware is to capture summary information about your request, even in the scenario of an unhandled error.
     /// It does not assume responsibility for global error handling, but will report a <see cref="StatusCodes.Status500InternalServerError"/>.
     /// </summary>
-    public class HttpRequestLoggingMiddleware
+    public class HttpRequestSummaryLoggingMiddleware
     {
         public const string MessageTemplate = "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {ElapsedMilliseconds} ms";
 
-        private readonly ILogger<HttpRequestLoggingMiddleware> _logger;
+        private readonly ILogger<HttpRequestSummaryLoggingMiddleware> _logger;
         private readonly RequestDelegate _next;
 
-        public HttpRequestLoggingMiddleware(RequestDelegate next, ILogger<HttpRequestLoggingMiddleware> logger)
+        public HttpRequestSummaryLoggingMiddleware(RequestDelegate next, ILogger<HttpRequestSummaryLoggingMiddleware> logger)
         {
             _next = next ?? throw new ArgumentNullException(nameof(next));
             _logger = logger;
@@ -31,25 +32,34 @@ namespace AB.Middleware.HttpRequestLogging
             if (httpContext == null) throw new ArgumentNullException(nameof(httpContext));
             //_logger.LogTrace("ApiVersion {apiVersion} detected", httpContext.GetRequestedApiVersion().ToString());// is this the best place for this?
 
-            var sw = Stopwatch.StartNew();
+            Int64 start = Stopwatch.GetTimestamp();
             try
             {
                 await _next(httpContext);
-                sw.Stop();
+                double elapsedMs = GetElapsedMilliseconds(start, Stopwatch.GetTimestamp());
 
                 int? statusCode = httpContext.Response?.StatusCode;
-                _logger.LogInformation(MessageTemplate, httpContext.Request.Method, httpContext.Request.Path, httpContext.Response.StatusCode, sw.Elapsed.TotalMilliseconds);
+                _logger.LogInformation(MessageTemplate, httpContext.Request.Method, httpContext.Request.Path, httpContext.Response.StatusCode, elapsedMs);
             }
             // Never caught - LogException returns false.  The 'when' keyword avoids unwinding the stack and reduces perf impact
             // https://www.thomaslevesque.com/2015/06/21/exception-filters-in-c-6/
-            catch (Exception e) when (LogException(httpContext, sw, e)) { }
+            catch (Exception e) when (LogException(httpContext, GetElapsedMilliseconds(start, Stopwatch.GetTimestamp()), e)) { }
         }
 
-        private bool LogException(HttpContext httpContext, Stopwatch sw, Exception ex)
+        private bool LogException(HttpContext httpContext, double elapsedMs, Exception ex)
         {
-            sw.Stop();
-            _logger.LogInformation(MessageTemplate, httpContext.Request.Method, httpContext.Request.Path, 500, sw.Elapsed.TotalMilliseconds);
+            _logger.LogInformation(MessageTemplate, httpContext.Request.Method, httpContext.Request.Path, 500, elapsedMs);
             return false;
+        }
+
+        private double GetElapsedMilliseconds(long start, long stop)
+        {
+            return (stop - start) * 1000 / (double)Stopwatch.Frequency;
+        }
+
+        private string GetPath(HttpContext httpContext)
+        {
+            return httpContext.Features.Get<IHttpRequestFeature>()?.RawTarget ?? httpContext.Request.Path.ToString();
         }
     }
 }
