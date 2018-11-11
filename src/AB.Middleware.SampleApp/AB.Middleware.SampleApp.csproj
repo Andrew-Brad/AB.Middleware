@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AB.Middleware.HttpRequestLogging\AB.Middleware.HttpRequestSummaryLogging.csproj" />
+    <ProjectReference Include="..\AB.Middleware.HttpRequestSummaryLogging\AB.Middleware.HttpRequestSummaryLogging.csproj" />
   </ItemGroup>
 
 </Project>
